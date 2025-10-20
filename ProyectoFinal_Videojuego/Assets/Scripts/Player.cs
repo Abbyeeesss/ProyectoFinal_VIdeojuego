@@ -43,4 +43,17 @@ public class Player : MonoBehaviour
     {
         rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+        Debug.Log("Colisión detectada con: " + collision.collider.name);
+
+        
+        if (collision.collider.CompareTag("Presencia"))
+        {
+            Debug.Log("El jugador fue eliminado por la entidad: " + collision.collider.name);
+            Destroy(gameObject);
+        }
+    }
 }
